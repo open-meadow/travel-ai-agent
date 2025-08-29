@@ -1,51 +1,12 @@
-import { useCallback } from 'react'
-
-import { useDescope, useSession, useUser } from '@descope/react-sdk';
-import { Descope } from '@descope/react-sdk';
-import { getSessionToken } from '@descope/react-sdk';
+import TopBar from './components/TopBar'
 
 const App = () => {
-    const { isAuthenticated, isSessionLoading } = useSession()
-    const { user, isUserLoading } = useUser()
-
-    const exampleFetchCall = async () => {
-        const sessionToken = getSessionToken();
-
-        fetch('your_application_server_url', {
-            headers: {
-                Accept: 'application/json',
-                Authorization: 'Bearer ' + sessionToken,
-            }
-        })
-    }
-
-    const handleLogout = useCallback(() => {
-        logout()
-    }, [logout])
-
-    return <>
-    {!isAuthenticated && (
-        <Descope
-            flowId="sign-up-or-in"
-            onSuccess={(e) => console.log(e.detail.user)}
-            onError={(e) => console.log('Could not log in!')}
-        />
-    )}
-    
-    {
-        (isSessionLoading || isUserLoading) && <p>Loading...</p>
-    }
-
-    {!isUserLoading && isAuthenticated &&
-        (
-            <>
-                <p>Hello {user.name}</p>
-                <div>My Private Component</div>
-                <button onClick={handleLogout}>Logout</button>
-            </>
-        )
-    }
-    </>;
+    return(
+        <>
+            <TopBar></TopBar>
+            <p>Hello World</p>
+        </>
+    )
 }
 
 export default App
