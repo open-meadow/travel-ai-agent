@@ -3,6 +3,7 @@ import { useCallback } from 'react'
 import { useDescope, useSession, useUser } from '@descope/react-sdk';
 import { Descope } from '@descope/react-sdk';
 import { getSessionToken } from '@descope/react-sdk';
+import { Container } from 'react-bootstrap';
 
 const Login = () => {
     const { isAuthenticated, isSessionLoading } = useSession()
@@ -26,11 +27,13 @@ const Login = () => {
 
     return <>
     {!isAuthenticated && (
-        <Descope
-            flowId="sign-up-or-in"
-            onSuccess={(e) => console.log(e.detail.user)}
-            onError={(e) => console.log('Could not log in!')}
-        />
+        <Container className="border d-flex justify-content-center">
+            <Descope
+                flowId="sign-up-or-in"
+                onSuccess={(e) => console.log(e.detail.user)}
+                onError={(e) => console.log('Could not log in!')}
+            />
+        </Container>
     )}
     
     {
