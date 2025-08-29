@@ -7,9 +7,6 @@ const TopBar = () => {
                 <NavbarBrand>AI Travel Agent</NavbarBrand>
                 <Button>Login</Button>
             </Container>
-
-            {/* <Nav className="ms-auto">
-            </Nav> */}
         </Navbar>       
     )
 }
