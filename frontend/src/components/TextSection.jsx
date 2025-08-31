@@ -1,6 +1,6 @@
-import { InputGroup, Form } from "react-bootstrap"
+import { InputGroup, Form, Button } from "react-bootstrap"
 
-const TextSection = () => {
+const TextSection = ({ handleChat }) => {
     return(
     <>
         <InputGroup className="mb-3">
@@ -9,6 +9,8 @@ const TextSection = () => {
                 aria-label="chat"
                 aria-describedby="chat"
             />
+            <Button onClick={handleChat}>Click me</Button>
+            
         </InputGroup>
     </>)
 }
