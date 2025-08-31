@@ -16,10 +16,11 @@ const TextSection = ({ handleChat }) => {
         <InputGroup className="mb-3">
             <Form.Control
                 placeholder="Write something here"
-                aria-label="chat"
-                aria-describedby="chat"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                    if(e.key === "Enter") sendMessage();
+                }}
             />
             <Button onClick={sendMessage}>Send</Button>
             

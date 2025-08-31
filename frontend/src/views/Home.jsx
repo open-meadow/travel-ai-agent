@@ -1,11 +1,10 @@
-import { Container, Button, Card } from 'react-bootstrap'
+import { Container, Spinner } from 'react-bootstrap'
 import { useState } from 'react';
 
 import TextSection from '../components/TextSection'
 import ChatMessages from '../components/ChatMessages';
 
 const Home = () => {
-  // const [reply, setReply] = useState("");
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([
     { role: "system", content: "You are a friendly and helpful AI assistant. Keep all your answers short." },
@@ -13,9 +12,8 @@ const Home = () => {
   ]);
 
   const handleChat = async (input) => {
-    console.log("handleChat got:", input);
+    setLoading(true)
 
-    // Create local conversation with new user message
     const newMessages = [...messages, { role: "user", content: input }];
     setMessages(newMessages); // update UI immediately
 
@@ -27,13 +25,12 @@ const Home = () => {
       });
 
       const data = await res.json();
-      console.log("server response:", data);
 
       const botReply = data.reply || "No response from server";
 
       // update state again with bot message
       setMessages(prev => [...prev, { role: "bot", content: botReply }]);
-      setReply(botReply);
+      setLoading(false)
 
     } catch (err) {
       console.error("Fetch error:", err);
@@ -46,6 +43,12 @@ const Home = () => {
     <>
       <Container style={{ height: "90vh" }} className='border d-flex flex-column flex-wrap justify-content-between align-items-center'>
         <ChatMessages messages={messages}></ChatMessages>
+        {loading && 
+          <Container className='my-2'>
+            <Spinner animation='border' role='status' size='sm' />
+            <span className='ms-2'>Thinking...</span>
+          </Container>
+        }
         <TextSection handleChat={handleChat}></TextSection>
       </Container>
     </>
