@@ -37,15 +37,20 @@ def hello_world():
 @app.route("/chat", methods=["GET", "POST"])
 def chat():
     data = request.get_json(force=True, silent=True) or {}
-    prompt = data.get("message", "Default prompt")
+    # prompt = data.get("message", "Default prompt")
+    messages = data.get("messages", [])
+    print("messages from client: ", messages)
 
     client = Client(
         host="http://localhost:11434",
         headers={'x-some-header': 'some-value'}
     )
     
-    response = client.generate(model="gemma3:1b", prompt=prompt)
-    return jsonify({"reply": response.get("response")})
+    response = client.chat(model="gemma3:1b", messages=messages)
+    print("response: ", response)
+    # print(response.message.content)
+    # return jsonify({"reply": response.get("response")})
+    return jsonify({"reply": response.message.content})
 
 @app.route("/test", methods=["GET", "POST"])
 def test():

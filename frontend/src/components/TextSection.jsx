@@ -1,6 +1,16 @@
-import { InputGroup, Form, Button } from "react-bootstrap"
+import { InputGroup, Form, Button } from "react-bootstrap";
+import { useState } from 'react';
 
 const TextSection = ({ handleChat }) => {
+    const [input, setInput] = useState("");
+
+    const sendMessage = () => {
+        console.log("i'm here - textSection: ", input)
+        if(input.trim() == "") return;
+        handleChat(input)
+        setInput("")
+    }
+
     return(
     <>
         <InputGroup className="mb-3">
@@ -8,8 +18,10 @@ const TextSection = ({ handleChat }) => {
                 placeholder="Write something here"
                 aria-label="chat"
                 aria-describedby="chat"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
             />
-            <Button onClick={handleChat}>Click me</Button>
+            <Button onClick={sendMessage}>Send</Button>
             
         </InputGroup>
     </>)
