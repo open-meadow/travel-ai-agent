@@ -12,23 +12,20 @@ const Home = () => {
   ]);
 
   const handleChat = async (input) => {
-    setLoading(true)
-
     const newMessages = [...messages, { role: "user", content: input }];
-    setMessages(newMessages); // update UI immediately
+    setLoading(true)
+    setMessages(newMessages);
 
     try {
       const res = await fetch("http://localhost:5000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: newMessages })  // use local copy, not stale state
+        body: JSON.stringify({ messages: newMessages })
       });
 
       const data = await res.json();
-
       const botReply = data.reply || "No response from server";
 
-      // update state again with bot message
       setMessages(prev => [...prev, { role: "bot", content: botReply }]);
       setLoading(false)
 
@@ -37,11 +34,9 @@ const Home = () => {
     }
   };
 
-
-
   return (
     <>
-      <Container style={{ height: "90vh" }} className='border d-flex flex-column flex-wrap justify-content-between align-items-center'>
+      <Container style={{ height: "90vh" }} className='border d-flex flex-column justify-content-between align-items-center'>
         <ChatMessages messages={messages}></ChatMessages>
         {loading && 
           <Container className='my-2'>
@@ -49,7 +44,7 @@ const Home = () => {
             <span className='ms-2'>Thinking...</span>
           </Container>
         }
-        <TextSection handleChat={handleChat}></TextSection>
+        <TextSection className="mb-5" handleChat={handleChat}></TextSection>
       </Container>
     </>
   )

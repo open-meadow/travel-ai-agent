@@ -10,6 +10,17 @@ const Login = () => {
     const { user, isUserLoading } = useUser()
     const { logout } = useDescope()
 
+    const getGoogleToken = async () => {
+        const sessionToken = getSessionToken();
+        const res = await fetch("http://127.0.0.1:5000/calendar-token", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ sessionJwt: sessionToken }),
+        });
+        const data = await res.json();
+        console.log("Google token response: ", data);
+    }
+
     const exampleFetchCall = async () => {
         const sessionToken = getSessionToken();
 
@@ -46,6 +57,7 @@ const Login = () => {
                 <p>Hello {user.name}</p>
                 <div>My Private Component</div>
                 <button onClick={handleLogout}>Logout</button>
+                <button onclick={getGoogleToken}>GetGoogleToken</button>
             </>
         )
     }

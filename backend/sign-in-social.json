@@ -1,0 +1,600 @@
+{
+  "contents": {
+    "startTask": "0",
+    "tasks": {
+      "0": {
+        "calculatedInputKeys": true,
+        "id": "0",
+        "name": "Sign In Screen",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "NI8HEVq5SG",
+              "taskId": "4"
+            },
+            {
+              "interactionId": "v62cd891RR",
+              "taskId": "4"
+            }
+          ]
+        },
+        "screenId": "SC329LWSEWP4FexaLYrTdHLdweOnw",
+        "type": "screen",
+        "view": {
+          "x": 144,
+          "y": -12
+        }
+      },
+      "3": {
+        "action": "logged-in",
+        "id": "3",
+        "name": "End",
+        "next": {},
+        "type": "automated",
+        "view": {
+          "x": 1332,
+          "y": -72
+        }
+      },
+      "4": {
+        "action": "oauth-start-sign-in",
+        "arguments": {
+          "allowSetDefaultProvider": {
+            "type": "inline",
+            "value": ""
+          },
+          "defaultProvider": {
+            "type": "inline",
+            "value": "google"
+          },
+          "exchangeStepId": {
+            "type": "inline",
+            "value": "4.end"
+          },
+          "popup": {
+            "type": "inline",
+            "value": ""
+          },
+          "prompt": {
+            "type": "inline",
+            "value": []
+          },
+          "rawResponse": {
+            "type": "inline",
+            "value": ""
+          },
+          "redirectUrl": {
+            "type": "inline",
+            "value": "http://localhost:5000/oauth/callback"
+          }
+        },
+        "id": "4",
+        "name": "Sign In / OAuth",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "success",
+              "taskId": "4.end"
+            }
+          ]
+        },
+        "type": "automated",
+        "view": {
+          "x": 576,
+          "y": -132
+        }
+      },
+      "5": {
+        "calculatedInputKeys": true,
+        "id": "5",
+        "name": "New Screen",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "JAPG_zGG9e",
+              "taskId": "3"
+            }
+          ]
+        },
+        "screenId": "SC329Mvjy21Bi3LZBa99JeS2HVqhz",
+        "type": "screen",
+        "view": {
+          "x": 972,
+          "y": -132
+        }
+      },
+      "4.end": {
+        "action": "exchange-oauth-code",
+        "arguments": {
+          "allowSetDefaultProvider": {
+            "type": "inline",
+            "value": ""
+          },
+          "defaultProvider": {
+            "type": "inline",
+            "value": "google"
+          },
+          "exchangeStepId": {
+            "type": "inline",
+            "value": "4.end"
+          },
+          "prompt": {
+            "type": "inline",
+            "value": []
+          },
+          "redirectUrl": {
+            "type": "inline",
+            "value": "http://localhost:5000/oauth/callback"
+          }
+        },
+        "id": "4.end",
+        "name": "Sign In / OAuth",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "success",
+              "taskId": "5"
+            }
+          ]
+        },
+        "type": "automated",
+        "view": {
+          "x": 576,
+          "y": -132
+        }
+      },
+      "start": {
+        "id": "start",
+        "name": "start",
+        "next": {
+          "rules": [
+            {
+              "taskId": "0"
+            }
+          ]
+        },
+        "view": {
+          "x": 12,
+          "y": 48
+        }
+      }
+    }
+  },
+  "flowId": "sign-in-social",
+  "metadata": {
+    "componentsVersion": "2.0.624",
+    "description": "Sign in using social login only.",
+    "name": "Sign in - social",
+    "sharedInteractions": [
+      {
+        "id": "3.success",
+        "type": "success"
+      }
+    ]
+  },
+  "references": {},
+  "screens": [
+    {
+      "contents": {
+        "7TYf9Fwym0": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "ROOT",
+          "props": {
+            "children": "Welcome!",
+            "full-width": false,
+            "id": "7TYf9Fwym0",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "h3"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "9Ocl3JTq-z": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "NI8HEVq5SG",
+            "v62cd891RR"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "center",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "9Ocl3JTq-z",
+            "justify": "start",
+            "paddingX": "0",
+            "paddingY": "4",
+            "spaceBetween": "1.5",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "EiUwC3gZ9i": {
+          "custom": {},
+          "displayName": "Error Message",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "ROOT",
+          "props": {
+            "data-type": "error-message",
+            "full-width": false,
+            "hide-when-empty": true,
+            "id": "EiUwC3gZ9i",
+            "italic": false,
+            "mode": "error",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "ErrorMessage"
+          }
+        },
+        "NI8HEVq5SG": {
+          "custom": {
+            "subType": "social",
+            "type": "button"
+          },
+          "displayName": "Google Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "9Ocl3JTq-z",
+          "props": {
+            "children": "Sign in with Google",
+            "color": "primary",
+            "data-descope-provider": "google",
+            "data-type": "social",
+            "formNoValidate": true,
+            "full-width": true,
+            "id": "NI8HEVq5SG",
+            "mode": "primary",
+            "size": "md",
+            "st-label-spacing": "10px",
+            "startIcon": "google",
+            "startIconColorText": false,
+            "variant": "outline"
+          },
+          "type": {
+            "resolvedName": "GoogleButton"
+          }
+        },
+        "ROOT": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "7TYf9Fwym0",
+            "vreuBB4Exd",
+            "9Ocl3JTq-z",
+            "EiUwC3gZ9i"
+          ],
+          "props": {
+            "align": "center",
+            "background": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "ROOT",
+            "justify": "center",
+            "paddingX": "4",
+            "paddingY": "8",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "cfMHoPWHbg": {
+          "custom": {},
+          "displayName": "Link",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "vreuBB4Exd",
+          "props": {
+            "children": "Privacy Statement",
+            "full-width": false,
+            "href": "",
+            "id": "cfMHoPWHbg",
+            "italic": false,
+            "mode": "primary",
+            "target": "_blank",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "Link"
+          }
+        },
+        "ga5sjn-g1M": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "vreuBB4Exd",
+          "props": {
+            "children": "and",
+            "full-width": false,
+            "id": "ga5sjn-g1M",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "lxh-7Di3Fw": {
+          "custom": {},
+          "displayName": "Link",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "vreuBB4Exd",
+          "props": {
+            "children": "Terms of Service",
+            "full-width": false,
+            "href": "",
+            "id": "lxh-7Di3Fw",
+            "italic": false,
+            "mode": "primary",
+            "target": "_blank",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "Link"
+          }
+        },
+        "tJIG3YaIeU": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "vreuBB4Exd",
+          "props": {
+            "children": "By signing in, I agree to the Company's",
+            "full-width": false,
+            "id": "tJIG3YaIeU",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "v62cd891RR": {
+          "custom": {
+            "subType": "social",
+            "type": "button"
+          },
+          "displayName": "Apple Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "9Ocl3JTq-z",
+          "props": {
+            "children": "Sign in with Apple",
+            "color": "primary",
+            "data-descope-provider": "apple",
+            "data-type": "social",
+            "formNoValidate": true,
+            "full-width": true,
+            "id": "v62cd891RR",
+            "size": "md",
+            "st-label-spacing": "10px",
+            "startIcon": "apple",
+            "startIconColorText": false,
+            "variant": "outline"
+          },
+          "type": {
+            "resolvedName": "AppleButton"
+          }
+        },
+        "vreuBB4Exd": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "tJIG3YaIeU",
+            "cfMHoPWHbg",
+            "ga5sjn-g1M",
+            "lxh-7Di3Fw"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "vreuBB4Exd",
+            "justify": "center",
+            "paddingX": "4",
+            "paddingY": "1",
+            "spaceBetween": "0.5",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        }
+      },
+      "interactions": [
+        {
+          "icon": "google",
+          "id": "NI8HEVq5SG",
+          "label": "Sign in with Google",
+          "subType": "social"
+        },
+        {
+          "icon": "apple",
+          "id": "v62cd891RR",
+          "label": "Sign in with Apple",
+          "subType": "social"
+        }
+      ],
+      "screenId": "SC329LWSEWP4FexaLYrTdHLdweOnw"
+    },
+    {
+      "contents": {
+        "1sMmkeVxVT": {
+          "custom": {},
+          "displayName": "Error Message",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "ROOT",
+          "props": {
+            "align": "center",
+            "data-type": "error-message",
+            "full-width": false,
+            "id": "1sMmkeVxVT",
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "error",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "ErrorMessage"
+          }
+        },
+        "JAPG_zGG9e": {
+          "custom": {
+            "subType": "outbound-app",
+            "type": "button"
+          },
+          "displayName": "Outbound Application",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "ROOT",
+          "props": {
+            "appId": "google-calendar",
+            "auto-submit": true,
+            "children": "Connect",
+            "color": "primary",
+            "data-descope-outbound-oauth-app-id": "google-calendar",
+            "data-name": "outboundApp",
+            "full-width": false,
+            "id": "JAPG_zGG9e",
+            "shape": "",
+            "size": "md",
+            "startIcon": "data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBoZWlnaHQ9IjQ1IiB2aWV3Qm94PSIwIDAgNDUgNDUiIHdpZHRoPSI0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBhdHRlcm4gaWQ9ImEiIGhlaWdodD0iMSIgcGF0dGVybkNvbnRlbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHdpZHRoPSIxIj48aW1hZ2UgaGVpZ2h0PSIxOTIiIHRyYW5zZm9ybT0ibWF0cml4KC4wMDY3NTE1NCAwIDAgLjAwNjc1MTU0IC0uMTQ4MTQ4IC0uMTQ4MTQ4KSIgd2lkdGg9IjE5MiIgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FZQUFBQlMzR3dIQUFBQVJHVllTV1pOVFFBcUFBQUFDQUFCaDJrQUJBQUFBQUVBQUFBYUFBQUFBQUFEb0FFQUF3QUFBQUVBQVFBQW9BSUFCQUFBQUFFQUFBREFvQU1BQkFBQUFBRUFBQURBQUFBQUFFMDdPY29BQUFwRVNVUkJWSGphN2QxNWNGWFZBY2Z4MzduM2JWbUlFQVVodUNEaUlFaWhGSnlLZFFPaEZnU05USjFhMjZIajB0S1dRcXNPMVJaaDFOcnF0SGJBamxxMWkraDBwQXVvZ3dvS2RVTkZpbEoyRjBUQ2toQkNUSUNBeWR2dVBmMERyVExrSmlGa2VYbnYrNW5oSHdJdkwvZjhmdmVjZTkrOU54SUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBRUNuTVpud0pzYi94dlpNcW42eXJDWlpvNEhHcXNUSzVqTThIVzlYOVo1WER6WFVYOUwyUVROSmExUXBxY3dZTFFuSkx0cjV4NkhiY3JvQVZ6OW9DMnNPMU45cXJHNG04TmxkZ0VaNHhqSHp3MUYzOW81NWd5czc2K2QxT3VzYmo3MG4zci9td0NlclpPM3RoRDhudWRhM055VGo2WFVsUDl6MHRad3F3Tmg3NHYxOW0xNGxxM1BJUVk2ejZpVnJYKzc3NDAyamM2SUFWejlvQzMyYlhpeXJub3crRG5mQVJxeG5GNTcyb3czOXM3NEFOUWZxYjJYUGowWktVSnkybXB2VkJSai9HOXZUU0RjeDNHaTBCRlpYOUoyMllWVFdGaUNwK3NuVzJnS0dHb0VsOE14M3MzY0paRFdKSVVZekptVnRBYXpSUU1ZWFRTK0Q3S2tsZCt6T3o4b0NHS3NTaGhqTmNXdHErbVRuRE1BSFhtaEpUdElxeU1vQ0FKbUdBb0FDQUJRQW9BQUFCUUFvQUVBQkFBb0FVQUNBQWdBVUFLQUFBQVVBS0FCQUFRQUtBRkFBZ0FJQUZBRG9Ba0k1MVhhajJ1NEZwb3hoRDFiZ1ZSM1lVWk5lMDVudjRheWlDcStjQXJTOTdnV203Rjh6OGtjUTgyRGV1cnNQMnBybG5icU5RbkpjOHl1V1FBQUZBQ2dBUUFFQUNnQlFBSUFDQUJRQW9BQUFCUUFvQUVBQkFBb0F0RWlJVFhCOHltdXRhZzVaSFd5d2txVGlRcU9UdWhrVkZ4cUYyTDFRZ0d6alcybmxoNTVlWEovV3huTHYvOEUvYW1vMVJzTk9kelJtY0VnWERBeXBLSy85Mzl0Ylc0OStQK2NONkpqdlRRRnl3Sm95VDNPWEpsVzUzMjlCVWF6V2J2ZTBkcnVuZVM4a1ZUb3lwT3N2amlnV2J2djNWZGNnL2U3NWhGWnVTUi8xdFlldmQxU1V4MVJFQVk2RGxmVFE4cVNlZWp2VnF2L3YrVmFMVnFlMGNvdW5XeVpFTmJ4ZjJ3Vnk3WFpmOXo2YjBNY0hmUWFLZytEMldmTGM5VlNpMWVIL29zcjl2bTc5ZTF5clAvS08rN1U4WC9yekt5bk5YQkFuL0JTZy9jeGJtdFNLOTlOdDlucWViM1hYMHdsdDJkUDYwTzdlWnpYamliZ1d2SldVdFpaQm9nRHRZK242dEo1ZmwycnoxMjFJV3MxWm1GQzZGUjFZdmltdEgveWxRZS92OWhnZ2pnSGF6LzU2NmVHWGtrMyttNkk4bzIrZkg5YWdFbGVuRkRzS3VWSjVyYS90MWI0V3JrNXBlM1Z3d3F2cmZDM2JtTmFFWVMwYmd2cWtOSGRwUWk5dlRqTTRGS0Q5TFZxZDBxRjQ4UExpb3JORHVubENWTjFpUi83OW9CSkhnMG9jWFRZMHBDWHIwcnIvaGFUOGdHWEtQMWVsTkg1WVNLYVo5L0xlYmwrL2ZpYlJvck5Qb0FCdG9tSmZjTmlHbnVacVZtbTB5USs2SENOTkhCN1NvYmpWbjE1cGZDYlpWZU5yVjQzVmFTYzJYZ0VyNmNrM1Uzcjg5WlE4bjdVK3h3QWRhTTVWVWMyZm1xL0o1NFpWR1BzOG9KR1EwZXlyb2kzK2xQZWFVV0dkMGN0cFZkSG1MRXpvcjY4bG13Mi82eGdHakFLMHZWTlBOSm8yTHFKL1RNL1hUZU9qT3ZOa1I1Y1BENm00NE5nQ2QwNWZOL0JydS9jRmgzdlVXVzZ6d2IvdTRvZ3VHOHBFemhLb0hjWENoNWN6RTRlSFduWG1wcWtaSUprT0xzQ0VZU0c5OWw1YTcydzcrb3hQNys2T1psMFoxZUMranVZdVRUSkl6QUFkdE1kb3hSYUxKNE5EM3Z1RXBsL3dsZ2xSNVVXT25IRkdEdzdwMFJ2eU5MZ3Z3MGNCdW9CTjVjSFRScC91VFMrbmVoVVpUUjBUa1NUbFJZeCtQakdxMjB1aktvaXlYVmtDZFFFN2E2emUzdGI0aDFhRk1hTitQWnZmQjAzNlNrZzdQdlpWT2pLc1U0bzU0S1VBWFVSZGczVDNNM0dsdmNhWFFLVWp3aTIrT3ZRblg0K3dRU2xBMStCYjZjVU5hVDMrZWtyVmRZMHZmL0lpUmxlZEcyWmpVWUN1YTkwT1gvV2ZIdUNtdmNOWGU1YlhXcTNmNmFtaU5uamQ3enBHczBxajZwN1BOcVFBWGRnRHl4TXEyM3RzNTBXTk1acCtXVVNqQnJoc1FBcVFXM3AyY3pSellsUWp6dURrR3dYSU1hNWpORzlLVEwxUDRDeE9KbUZYMUVFODMycmEvQVl0V1pjV2w3VlJnSnkwL3hPcjN5OUphTnBqY2UydlozdFFnQzR1UDJKVUdQdjhqekV0Vzk1OFVPbHA1cE1OcW10Z0czSU0wSVg5WWNxUmQ4TWswbEpGclZYRlBsOHIzay9ybFhlOXdIdDJ0KzMxTmZQSnVPNmZFbXVYUjZXQUdhRERSVU5TLzE1R0Z3NTBOZXZLcUI2NUlhYVIvWU5QZDI2dDh2VFlDcTdrcEFCWjZzeGVqdTY5SnFieHc0SjM4VSsvblZidEp4d1dVNEFzWlNUOWJId2s4S0kzejdkYXRvRWIzU2xBTmg5b09ZZHZqUXl5ZGdlUE9LRUFXVzdrR2NIbkc3YnQ1V2tQRkNERGxWVmJmWGdjVDNQclVSQjg4enFuUXp0eGRtWVRCRXY3MG9yM1BDMytiMG9iZDNrYTNzL1ZmZGZHV3ZWYThaUUNuKzRRNXJvNENwQkpxZzVZUGJzMnJhWHJVOXIvaFRNMGE3ZDdLcSsxcmJvcmEwdGw4T3hSMG9QcmcxZ0NaWkRaQytOYXNESjVSUGcvODdjM1cvZXMwT2VhZU1ab24rNE1Bd1hJSU9PR0JFK015emVtdEdqMXNaMjJYTFhWMDB1Ymd2OVB2NU1ZQmdxUVFjWU9DU2tTQ2w2V1BQeFNVaSsyOE56OXZ6ZWxkZWRUaWNDdnU0N1JoQyt6RXFVQUdhUkhnZEhWWHcwK2IrOWJxOTgrbDlDTUorSjZ0OEkvNnZKbTMwcnZWdmlhOFVSYzl5eE9OUG53cTRzSHVUcVpld1E0Q000MDE1NGYxcklOYVZVMzhkdFhOcGQ3bXY1NGc2SmhvMU9MSGZVNndhanF3T0VIM2pZVitpL3UvYjkxSGxmQ01RTmtvRmhZdXZPYlVVWER6ZStkRXltcnJWV2VWbTVKNjZNcXYwWGhsNlNmZmlPaUFTY3pCQlFnUXczczQraVhWMFFWZHR0K2lYTE5xSWd1WisxUEFUTGRCUU5kM2ZlZG1Ib1V0RTBKWE1kb3lvVVJmWDgwU3g4SzBFVU1PY1hSb3pmbWFkeVhRaTIrNjZzeC9YczVldkM2bUw1M0llSG5JTGlMS1M0d3VtMVNWS1VqRHYvK3J6Yys4SlR5bWwvck84Wm9lRDlIbHc0SjZkSnpRcTE2dW5SejhxTkd4WVVtY01ZQkJXZ3paNWM0dXIwMHFycUd3Nzg1Zm5PNXA3SnFYd2ZqVnZVSnFYdUIwVW5kakhwMk0rcGI3T2lpczkxai9vVWF4MnJxbUxDbWptRldvUUFkcUNoUEdqM1kxZWpCWE1uR01RQkFBUUFLQUZBQWdBSUFGQUNnQUFBRkFDZ0FRQUVBQ2dCUUFLQ3pkZWpGY0x1ODIxN3R6QisyTHQyamJ2cHJrWU1NZTdBYlYzczFwMjg1czlQR3lZblorcUp4RlZWU012c0tjTkIvNTVMT0hOeUd1THRtMVo3ZUk0aDVzSW1iRzE0dEtTL3FsSEV5MG42NXpsanp3SllxbGtESUtaK0Z2K2V5LzZ6aEdBQ0Vud0tBOEZNQUVINEtBTUpQQVVENEtRQUlQd1VBNGFjQUlQd1VBSVNmQW9Ed1V3QVFmZ29Bd2s4QlFQZ3BBQWcvQlFEaHB3QWcvQlFBaEo4Q2dQQlRBQkQreml1QTZhaGIvVUg0TTNJR01LYVM2QkQrbkMyQXRiYU0rQkQrbkMyQVk4d1NJa1Q0YzdZQW9ZaTdTTVo0UkludzUyUUJkdjdpalcxR21rK2NDSDl1SGdSTGlvUkNzeVd6bDFnUi9wd3N3STVacjFjNmpwM01LVkhDbjVNRmtLVGRjMWE5NmJqT2VDTlRTOHdJZjg0VlFKSXFacTk4T1J4MXo1VzBtTGdSL3B3cndHY0h4WHZ1V0hXbDZ6am5POUpEeG1nWDhldGNEUkduUGxmQy8yblpNMHZKSTVQeTNiMDFmYXpqRnJUMWE4ZmNrSGZpZ0dLWG1BZnJuMHhWTGJoMmNSVmJBZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQURRTWY0SFZmbWF3NTQ5Uzc0QUFBQUFTVVZPUks1Q1lJST0iLz48L3BhdHRlcm4+PHBhdGggZD0ibTEgMWg0M3Y0M2gtNDN6IiBmaWxsPSJ1cmwoI2EpIi8+PC9zdmc+",
+            "text-align": "center",
+            "variant": "contained"
+          },
+          "type": {
+            "resolvedName": "OutboundAppButton"
+          }
+        },
+        "LmrSIGOWZb": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "ROOT",
+          "props": {
+            "align": "center",
+            "children": "Screen body",
+            "full-width": false,
+            "id": "LmrSIGOWZb",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "ROOT": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "LmrSIGOWZb",
+            "JAPG_zGG9e",
+            "1sMmkeVxVT"
+          ],
+          "props": {
+            "align": "center",
+            "background": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "ROOT",
+            "justify": "center",
+            "paddingX": "4",
+            "paddingY": "8",
+            "space-between": "md",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        }
+      },
+      "interactions": [
+        {
+          "icon": "data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBoZWlnaHQ9IjQ1IiB2aWV3Qm94PSIwIDAgNDUgNDUiIHdpZHRoPSI0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBhdHRlcm4gaWQ9ImEiIGhlaWdodD0iMSIgcGF0dGVybkNvbnRlbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHdpZHRoPSIxIj48aW1hZ2UgaGVpZ2h0PSIxOTIiIHRyYW5zZm9ybT0ibWF0cml4KC4wMDY3NTE1NCAwIDAgLjAwNjc1MTU0IC0uMTQ4MTQ4IC0uMTQ4MTQ4KSIgd2lkdGg9IjE5MiIgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FZQUFBQlMzR3dIQUFBQVJHVllTV1pOVFFBcUFBQUFDQUFCaDJrQUJBQUFBQUVBQUFBYUFBQUFBQUFEb0FFQUF3QUFBQUVBQVFBQW9BSUFCQUFBQUFFQUFBREFvQU1BQkFBQUFBRUFBQURBQUFBQUFFMDdPY29BQUFwRVNVUkJWSGphN2QxNWNGWFZBY2Z4MzduM2JWbUlFQVVodUNEaUlFaWhGSnlLZFFPaEZnU05USjFhMjZIajB0S1dRcXNPMVJaaDFOcnF0SGJBamxxMWkraDBwQXVvZ3dvS2RVTkZpbEoyRjBUQ2toQkNUSUNBeWR2dVBmMERyVExrSmlGa2VYbnYrNW5oSHdJdkwvZjhmdmVjZTkrOU54SUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBRUNuTVpud0pzYi94dlpNcW42eXJDWlpvNEhHcXNUSzVqTThIVzlYOVo1WER6WFVYOUwyUVROSmExUXBxY3dZTFFuSkx0cjV4NkhiY3JvQVZ6OW9DMnNPMU45cXJHNG04TmxkZ0VaNHhqSHp3MUYzOW81NWd5czc2K2QxT3VzYmo3MG4zci9td0NlclpPM3RoRDhudWRhM055VGo2WFVsUDl6MHRad3F3Tmg3NHYxOW0xNGxxM1BJUVk2ejZpVnJYKzc3NDAyamM2SUFWejlvQzMyYlhpeXJub3crRG5mQVJxeG5GNTcyb3czOXM3NEFOUWZxYjJYUGowWktVSnkybXB2VkJSai9HOXZUU0RjeDNHaTBCRlpYOUoyMllWVFdGaUNwK3NuVzJnS0dHb0VsOE14M3MzY0paRFdKSVVZekptVnRBYXpSUU1ZWFRTK0Q3S2tsZCt6T3o4b0NHS3NTaGhqTmNXdHErbVRuRE1BSFhtaEpUdElxeU1vQ0FKbUdBb0FDQUJRQW9BQUFCUUFvQUVBQkFBb0FVQUNBQWdBVUFLQUFBQVVBS0FCQUFRQUtBRkFBZ0FJQUZBRG9Ba0k1MVhhajJ1NEZwb3hoRDFiZ1ZSM1lVWk5lMDVudjRheWlDcStjQXJTOTdnV203Rjh6OGtjUTgyRGV1cnNQMnBybG5icU5RbkpjOHl1V1FBQUZBQ2dBUUFFQUNnQlFBSUFDQUJRQW9BQUFCUUFvQUVBQkFBb0F0RWlJVFhCOHltdXRhZzVaSFd5d2txVGlRcU9UdWhrVkZ4cUYyTDFRZ0d6alcybmxoNTVlWEovV3huTHYvOEUvYW1vMVJzTk9kelJtY0VnWERBeXBLSy85Mzl0Ylc0OStQK2NONkpqdlRRRnl3Sm95VDNPWEpsVzUzMjlCVWF6V2J2ZTBkcnVuZVM4a1ZUb3lwT3N2amlnV2J2djNWZGNnL2U3NWhGWnVTUi8xdFlldmQxU1V4MVJFQVk2RGxmVFE4cVNlZWp2VnF2L3YrVmFMVnFlMGNvdW5XeVpFTmJ4ZjJ3Vnk3WFpmOXo2YjBNY0hmUWFLZytEMldmTGM5VlNpMWVIL29zcjl2bTc5ZTF5clAvS08rN1U4WC9yekt5bk5YQkFuL0JTZy9jeGJtdFNLOTlOdDlucWViM1hYMHdsdDJkUDYwTzdlWnpYamliZ1d2SldVdFpaQm9nRHRZK242dEo1ZmwycnoxMjFJV3MxWm1GQzZGUjFZdmltdEgveWxRZS92OWhnZ2pnSGF6LzU2NmVHWGtrMyttNkk4bzIrZkg5YWdFbGVuRkRzS3VWSjVyYS90MWI0V3JrNXBlM1Z3d3F2cmZDM2JtTmFFWVMwYmd2cWtOSGRwUWk5dlRqTTRGS0Q5TFZxZDBxRjQ4UExpb3JORHVubENWTjFpUi83OW9CSkhnMG9jWFRZMHBDWHIwcnIvaGFUOGdHWEtQMWVsTkg1WVNLYVo5L0xlYmwrL2ZpYlJvck5Qb0FCdG9tSmZjTmlHbnVacVZtbTB5USs2SENOTkhCN1NvYmpWbjE1cGZDYlpWZU5yVjQzVmFTYzJYZ0VyNmNrM1Uzcjg5WlE4bjdVK3h3QWRhTTVWVWMyZm1xL0o1NFpWR1BzOG9KR1EwZXlyb2kzK2xQZWFVV0dkMGN0cFZkSG1MRXpvcjY4bG13Mi82eGdHakFLMHZWTlBOSm8yTHFKL1RNL1hUZU9qT3ZOa1I1Y1BENm00NE5nQ2QwNWZOL0JydS9jRmgzdlVXVzZ6d2IvdTRvZ3VHOHBFemhLb0hjWENoNWN6RTRlSFduWG1wcWtaSUprT0xzQ0VZU0c5OWw1YTcydzcrb3hQNys2T1psMFoxZUMranVZdVRUSkl6QUFkdE1kb3hSYUxKNE5EM3Z1RXBsL3dsZ2xSNVVXT25IRkdEdzdwMFJ2eU5MZ3Z3MGNCdW9CTjVjSFRScC91VFMrbmVoVVpUUjBUa1NUbFJZeCtQakdxMjB1aktvaXlYVmtDZFFFN2E2emUzdGI0aDFhRk1hTitQWnZmQjAzNlNrZzdQdlpWT2pLc1U0bzU0S1VBWFVSZGczVDNNM0dsdmNhWFFLVWp3aTIrT3ZRblg0K3dRU2xBMStCYjZjVU5hVDMrZWtyVmRZMHZmL0lpUmxlZEcyWmpVWUN1YTkwT1gvV2ZIdUNtdmNOWGU1YlhXcTNmNmFtaU5uamQ3enBHczBxajZwN1BOcVFBWGRnRHl4TXEyM3RzNTBXTk1acCtXVVNqQnJoc1FBcVFXM3AyY3pSellsUWp6dURrR3dYSU1hNWpORzlLVEwxUDRDeE9KbUZYMUVFODMycmEvQVl0V1pjV2w3VlJnSnkwL3hPcjN5OUphTnBqY2UydlozdFFnQzR1UDJKVUdQdjhqekV0Vzk1OFVPbHA1cE1OcW10Z0czSU0wSVg5WWNxUmQ4TWswbEpGclZYRlBsOHIzay9ybFhlOXdIdDJ0KzMxTmZQSnVPNmZFbXVYUjZXQUdhRERSVU5TLzE1R0Z3NTBOZXZLcUI2NUlhYVIvWU5QZDI2dDh2VFlDcTdrcEFCWjZzeGVqdTY5SnFieHc0SjM4VSsvblZidEp4d1dVNEFzWlNUOWJId2s4S0kzejdkYXRvRWIzU2xBTmg5b09ZZHZqUXl5ZGdlUE9LRUFXVzdrR2NIbkc3YnQ1V2tQRkNERGxWVmJmWGdjVDNQclVSQjg4enFuUXp0eGRtWVRCRXY3MG9yM1BDMytiMG9iZDNrYTNzL1ZmZGZHV3ZWYThaUUNuKzRRNXJvNENwQkpxZzVZUGJzMnJhWHJVOXIvaFRNMGE3ZDdLcSsxcmJvcmEwdGw4T3hSMG9QcmcxZ0NaWkRaQytOYXNESjVSUGcvODdjM1cvZXMwT2VhZU1ab24rNE1Bd1hJSU9PR0JFK015emVtdEdqMXNaMjJYTFhWMDB1Ymd2OVB2NU1ZQmdxUVFjWU9DU2tTQ2w2V1BQeFNVaSsyOE56OXZ6ZWxkZWRUaWNDdnU0N1JoQyt6RXFVQUdhUkhnZEhWWHcwK2IrOWJxOTgrbDlDTUorSjZ0OEkvNnZKbTMwcnZWdmlhOFVSYzl5eE9OUG53cTRzSHVUcVpld1E0Q000MDE1NGYxcklOYVZVMzhkdFhOcGQ3bXY1NGc2SmhvMU9MSGZVNndhanF3T0VIM2pZVitpL3UvYjkxSGxmQ01RTmtvRmhZdXZPYlVVWER6ZStkRXltcnJWV2VWbTVKNjZNcXYwWGhsNlNmZmlPaUFTY3pCQlFnUXczczQraVhWMFFWZHR0K2lYTE5xSWd1WisxUEFUTGRCUU5kM2ZlZG1Ib1V0RTBKWE1kb3lvVVJmWDgwU3g4SzBFVU1PY1hSb3pmbWFkeVhRaTIrNjZzeC9YczVldkM2bUw1M0llSG5JTGlMS1M0d3VtMVNWS1VqRHYvK3J6Yys4SlR5bWwvck84Wm9lRDlIbHc0SjZkSnpRcTE2dW5SejhxTkd4WVVtY01ZQkJXZ3paNWM0dXIwMHFycUd3Nzg1Zm5PNXA3SnFYd2ZqVnZVSnFYdUIwVW5kakhwMk0rcGI3T2lpczkxai9vVWF4MnJxbUxDbWptRldvUUFkcUNoUEdqM1kxZWpCWE1uR01RQkFBUUFLQUZBQWdBSUFGQUNnQUFBRkFDZ0FRQUVBQ2dCUUFLQ3pkZWpGY0x1ODIxN3R6QisyTHQyamJ2cHJrWU1NZTdBYlYzczFwMjg1czlQR3lZblorcUp4RlZWU012c0tjTkIvNTVMT0hOeUd1THRtMVo3ZUk0aDVzSW1iRzE0dEtTL3FsSEV5MG42NXpsanp3SllxbGtESUtaK0Z2K2V5LzZ6aEdBQ0Vud0tBOEZNQUVINEtBTUpQQVVENEtRQUlQd1VBNGFjQUlQd1VBSVNmQW9Ed1V3QVFmZ29Bd2s4QlFQZ3BBQWcvQlFEaHB3QWcvQlFBaEo4Q2dQQlRBQkQreml1QTZhaGIvVUg0TTNJR01LYVM2QkQrbkMyQXRiYU0rQkQrbkMyQVk4d1NJa1Q0YzdZQW9ZaTdTTVo0UkludzUyUUJkdjdpalcxR21rK2NDSDl1SGdSTGlvUkNzeVd6bDFnUi9wd3N3STVacjFjNmpwM01LVkhDbjVNRmtLVGRjMWE5NmJqT2VDTlRTOHdJZjg0VlFKSXFacTk4T1J4MXo1VzBtTGdSL3B3cndHY0h4WHZ1V0hXbDZ6am5POUpEeG1nWDhldGNEUkduUGxmQy8yblpNMHZKSTVQeTNiMDFmYXpqRnJUMWE4ZmNrSGZpZ0dLWG1BZnJuMHhWTGJoMmNSVmJBZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQURRTWY0SFZmbWF3NTQ5Uzc0QUFBQUFTVVZPUks1Q1lJST0iLz48L3BhdHRlcm4+PHBhdGggZD0ibTEgMWg0M3Y0M2gtNDN6IiBmaWxsPSJ1cmwoI2EpIi8+PC9zdmc+",
+          "id": "JAPG_zGG9e",
+          "label": "Connect",
+          "subType": "outbound-app",
+          "type": "button"
+        }
+      ],
+      "screenId": "SC329Mvjy21Bi3LZBa99JeS2HVqhz"
+    }
+  ]
+}

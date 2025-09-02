@@ -1,6 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response, stream_with_context
+from dotenv import load_dotenv
 from flask_cors import CORS
 import json
+import os
 import requests
 from ollama import Client, chat
 from descope import (
@@ -14,21 +16,11 @@ from descope import (
 app = Flask(__name__)
 CORS(app)
 
-try:
-    descope_client = DescopeClient(project_id='P31rvuz4KAU5NBauZw9vUsGTBWRg')
-except Exception as error:
-    print("failed to initialize. Error: ")
-    print(error)
-
-def validate_session():
-    session_token = request.header.get("Authorization")
-    try:
-        jwt_response = descope_client.validate_session(session_token=session_token)
-        print("successfully validated session")
-        print(jwt_response)
-    except Exception as Error:
-        print("Could not validate user session. Error")
-        print(error)
+load_dotenv()
+client = DescopeClient(
+    project_id=os.getenv("DESCOPE_PROJECT_ID"),
+    management_key=os.getenv("DESCOPE_MANAGEMENT_KEY")
+)
 
 @app.route('/')
 def hello_world():
@@ -37,9 +29,7 @@ def hello_world():
 @app.route("/chat", methods=["GET", "POST"])
 def chat():
     data = request.get_json(force=True, silent=True) or {}
-    # prompt = data.get("message", "Default prompt")
     messages = data.get("messages", [])
-    print("messages from client: ", messages)
 
     client = Client(
         host="http://localhost:11434",
@@ -47,10 +37,27 @@ def chat():
     )
     
     response = client.chat(model="gemma3:1b", messages=messages)
-    print("response: ", response)
-    # print(response.message.content)
-    # return jsonify({"reply": response.get("response")})
+    # print("response: ", response)
+
     return jsonify({"reply": response.message.content})
+
+@app.route("/flows")
+def get_flows():
+    flow = client.flows().load("sign-in-social")
+    return jsonify(flow)
+
+@app.route("/oauth/callback")
+def oauth_callback():
+    code = request.args.get("code")
+    state = request.args.get("state")
+
+    return "OAuth flow completed, you can close this tab"
+
+@app.route("/calendar-token", methods=["POST"])
+def get_calendar_token():
+    session_jwt = request.json.get("sessionJwt")
+    token = client.outbound.get_app_token("google-calendar", session_jwt)
+    return jsonify(token)
 
 @app.route("/test", methods=["GET", "POST"])
 def test():
