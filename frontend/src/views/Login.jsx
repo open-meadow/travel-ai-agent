@@ -1,21 +1,14 @@
-import { useEffect, useCallback } from 'react'
+import { useCallback } from 'react'
 
-import { useDescope, useSession, useUser, getSessionToken, Descope } from '@descope/react-sdk';
-import { useNavigate } from "react-router-dom";
+import { useDescope, useSession, useUser } from '@descope/react-sdk';
+import { Descope } from '@descope/react-sdk';
+import { getSessionToken } from '@descope/react-sdk';
 import { Container } from 'react-bootstrap';
 
 const Login = () => {
-    const { isAuthenticated, isSessionLoading } = useSession();
-    const { user, isUserLoading } = useUser();
-    const { logout } = useDescope();
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if(isAuthenticated) {
-            navigate('/');
-            return null;
-        }
-    }, [isAuthenticated, navigate])
+    const { isAuthenticated, isSessionLoading } = useSession()
+    const { user, isUserLoading } = useUser()
+    const { logout } = useDescope()
 
     const getGoogleToken = async () => {
         const sessionToken = getSessionToken();
@@ -38,11 +31,6 @@ const Login = () => {
             }
         })
     }
-
-    const handleLoginSuccess = (e) => {
-        console.log("Logged-in user: ", e.detail.user);
-        navigate('/');
-    };
 
     const handleLogout = useCallback(() => {
         logout()
@@ -69,7 +57,7 @@ const Login = () => {
                 <p>Hello {user.name}</p>
                 <div>My Private Component</div>
                 <button onClick={handleLogout}>Logout</button>
-                <button onClick={getGoogleToken}>GetGoogleToken</button>
+                <button onclick={getGoogleToken}>GetGoogleToken</button>
             </>
         )
     }

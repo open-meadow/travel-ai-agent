@@ -55,9 +55,8 @@ def oauth_callback():
 
 @app.route("/calendar-token", methods=["POST"])
 def get_calendar_token():
-    body = request.get_json()
-    session_jwt = body.get("sessionJwt")
-    token = client.outbound.get_app_token("google", session_jwt)
+    session_jwt = request.json.get("sessionJwt")
+    token = client.outbound.get_app_token("google-calendar", session_jwt)
     return jsonify(token)
 
 @app.route("/test", methods=["GET", "POST"])
